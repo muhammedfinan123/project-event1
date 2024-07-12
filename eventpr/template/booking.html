@@ -1,0 +1,30 @@
+
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}
+booking
+{% endblock %}
+
+{% block content %}
+<div class="container p-5" style="background-image: linear-gradient(120deg, #f66565 0%, #fe8e6f 100%); background-color: #20a6df; /* Fallback color if gradients are not supported */
+    border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h2 class="text-center mb-4">Book Now your events..!</h2>
+    <form action="" method="POST" class="my-form" style="padding: 20px; background-color: rgb(255, 248, 121); border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        {% csrf_token %}
+        <div class="form-group" style="margin-bottom: 20px;">
+            {{ form.as_p }}
+        </div>
+        <button type="Back" class="btn btn-primary" style="background-color: #007bff; color: #f4f6ef; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Back</button> 
+        <button type="Submit" class="btn btn-primary" style="background-color: #007bff; color: #f4f6ef; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">Submit</button>               
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
+

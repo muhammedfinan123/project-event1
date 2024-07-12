@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'css/styleuser.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, rgb(238, 84, 207), rgb(238, 238, 82));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #67ded4;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(225, 13, 13, 0.15);
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 600;
+            color: #333;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 50px;
+            border-radius: 5px;
+            background: #0dfdb5;
+        }
+
+        .content form .user-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .user-details .input-box {
+            margin-bottom: 15px;
+            width: calc(100% / 2 - 20px);
+        }
+
+        .user-details .input-box label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .user-details .input-box input {
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+            background-color: #f0f8ff;
+        }
+
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid {
+            border-color: #111211;
+            background-color: #2dbfd2;
+        }
+
+        .button {
+            margin-top: 35px;
+            width: 100%;
+        }
+
+        .button input {
+            height: 50px;
+            width: 100%;
+            color: #fff;
+            background: #7d0dfd;
+            border-radius: 5px;
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button input:hover {
+            background: #084dbf;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="user-details">
+                    <div class="input-box">
+                        <label for="username">User Name: </label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="email">E-Mail ID: </label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="password">Password: </label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="confirmpassword">Confirm Password: </label>
+                        <input type="password" name="confirmpassword" id="confirmpassword" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" name="submit" value="Signup">
+                </div>
+            </form>
+            <div>
+                {% for message in messages %}
+                    <script>
+                        alert('{{ message }}');
+                    </script>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- CDNS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(135deg, #4a90e2, #0073e6);
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: #4a136d !important;
+            font-size: 32px;
+            font-family: 'Impact', Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            transition: color 0.3s;
+        }
+        .navbar-brand:hover {
+            color: #ff0000 !important;
+        }
+        .nav > li > a {
+            color: #d54848 !important;
+            font-size: 18px;
+            padding: 15px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav > li.active > a,
+        .nav > li > a:hover {
+            background-color: #005bb5;
+            color: #ffcc00 !important;
+        }
+        .nav > li.active > a {
+            background-color: #003d7a !important;
+        }
+        .navbar-nav > .dropdown:hover > .dropdown-menu {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .dropdown-menu {
+            background-color: #004080;
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown-menu > li > a {
+            color: #e4c85f !important;
+            font-size: 16px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .dropdown-menu > li > a:hover {
+            background-color: #003366 !important;
+            color: #ffcc00 !important;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar start -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">DQ Events</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li{% if request.path == '/' %} class="active"{% endif %}><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li{% if request.path == '/about/' %} class="active"{% endif %}><a href="{% url 'about' %}"><i class="fas fa-info-circle"></i> About</a></li>
+                {% if user.is_authenticated %}
+                <li{% if request.path == '/events/' %} class="active"{% endif %}><a href="{% url 'events' %}"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                <li{% if request.path == '/booking/' %} class="active"{% endif %}><a href="{% url 'booking' %}"><i class="fas fa-ticket-alt"></i> Booking</a></li>
+                <li{% if request.path == '/contact/' %} class="active"{% endif %}><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+            {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+                <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content area -->
+    <div class="container">
+        {% block content %}
+        <!-- Example of an image with specified dimensions -->
+        <img src="path/to/your/image.jpg" alt="Image description" width="100" height="300">
+        <!-- Content specific to each page goes here -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; {% now "Y" %} DQ Events. All rights reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline text-right">
+                        <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#">Cookie Policy</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

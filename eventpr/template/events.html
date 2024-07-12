@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Event List
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d5c182; /* Light gray background */
+            padding-top: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: #bb5a5a; /* White container background */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .card {
+            background: linear-gradient(to bottom right, #007bff, #17a2b8); /* Gradient background */
+            border: 2px solid transparent; /* Transparent border */
+            border-radius: 8px;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: center;
+            padding: 10px;
+            position: relative; /* Added for button positioning */
+            color: #ffda46; /* White text color */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .card-text {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .book-button {
+            background-color: #ffffff; /* White button background */
+            color: #007bff; /* Blue button text color */
+            border: 2px solid #ffffff; /* White border */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-decoration: none; /* Ensure button looks like a link */
+        }
+
+        .book-button:hover {
+            background-color: #f1f1f1; /* Light gray on hover */
+            color: #007bff; /* Blue text color on hover */
+        }
+    </style>
+
+    <div class="container">
+        {% for event in eve %}
+            <div class="card">
+                <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.name }}</h5>
+                    <p class="card-text">{{ event.description }}</p>
+                    <a href="{% url 'booking' %}" class="book-button">Book Now</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
